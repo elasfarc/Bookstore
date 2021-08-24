@@ -1,4 +1,5 @@
 import './Book.css';
+import PropTypes from 'prop-types';
 
 const Book = ({ book, removeBook }) => (
   <div className="book flex">
@@ -15,3 +16,8 @@ const Book = ({ book, removeBook }) => (
 );
 
 export default Book;
+
+Book.propTypes = {
+  book: PropTypes.objectOf(PropTypes.object()).isRequired,
+  removeBook: PropTypes.func.isRequired,
+};

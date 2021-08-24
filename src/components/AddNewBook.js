@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const NewBook = ({ addBook }) => {
   const [bookTitle, setBookTitle] = React.useState('');
@@ -35,3 +36,5 @@ const NewBook = ({ addBook }) => {
 };
 
 export default NewBook;
+
+NewBook.propTypes = { addBook: PropTypes.func.isRequired };
