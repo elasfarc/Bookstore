@@ -20,10 +20,10 @@ export const removeBook = (id) => ({
 
 // REDUCER
 const initState = [
-  { id: 1, title: 'BOOK#1', author: 'some author' },
-  { id: 2, title: 'BOOK#2', author: 'some author' },
-  { id: 3, title: 'BOOK#3', author: 'some author' },
-  { id: 4, title: 'BOOK#4', author: 'some author' },
+  { id: 1e5, title: 'BOOK#1', author: 'some author' },
+  { id: 2e5, title: 'BOOK#2', author: 'some author' },
+  { id: 3e5, title: 'BOOK#3', author: 'some author' },
+  { id: 4e5, title: 'BOOK#4', author: 'some author' },
 ];
 const getBooksReducer = () => {
   let lastID = 0;
@@ -40,7 +40,8 @@ const getBooksReducer = () => {
         },
       ];
     }
-    if (type === BOOK_REMOVED) return state.filter((book) => book.id !== payload.id);
+    if (type === BOOK_REMOVED)
+      return state.filter((book) => book.id !== payload.id);
 
     return state;
   };
