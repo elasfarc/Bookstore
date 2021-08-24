@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
-import Library from './components/Library/Library';
-import Categories from './components/Categories/Categories';
+import Navbar from './components/Navbar';
+import Library from './components/Library';
+import Categories from './components/Categories';
 import './App.css';
 import store from './store/configureStore';
 import * as actions from './store/books/book';
