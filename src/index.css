@@ -1,4 +1,5 @@
 body {
+  background-color: rgb(136, 105, 235);
   margin: 0;
   font-family:
     -apple-system,
@@ -24,4 +25,8 @@ code {
     Consolas,
     'Courier New',
     monospace;
+}
+
+.App {
+  text-align: center;
 }

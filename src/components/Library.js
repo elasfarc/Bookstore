@@ -1,6 +1,7 @@
 import React from 'react';
 import Book from './Book';
 import NewBook from './AddNewBook';
+import './Library.css';
 
 const availableBooks = [
   { id: 1, title: 'BOOK#1', author: 'some author' },
