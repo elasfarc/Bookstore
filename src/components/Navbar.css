@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.cross-center {
+  align-items: center;
+}
+
+.gap-10 {
+  gap: 10%;
+}
+
+.navbar {
+  padding: 2em 0;
+  background-color: rgb(147, 147, 226);
+  color: white;
+}
+
+.container {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.row {
+  justify-content: space-between;
+}
+
+.most-left {
+  padding: 0 2em;
+}
+
+.logo {
+  font-size: 2rem;
+}
