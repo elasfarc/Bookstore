@@ -14,7 +14,6 @@ const Library = () => {
     setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookID));
   };
   const addBook = ({ title }) => {
-    console.log('called with ', title);
     setBooks((prevBooks) => [
       ...prevBooks,
       { id: 12, title, author: 'some author' },

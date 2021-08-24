@@ -22,12 +22,12 @@ export const removeBook = (id) => ({
 const getBooksReducer = () => {
   let lastID = 0;
   const reducer = (state = [], action) => {
-    // console.log(lastID, state, action);
     const { type, payload } = action;
     if (type === BOOK_ADDED) {
       return [
         ...state,
         {
+          // eslint-disable-next-line no-plusplus
           id: ++lastID,
           title: payload.title,
           author: payload.author,
