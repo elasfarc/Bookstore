@@ -1,0 +1,12 @@
+.library {
+  margin-top: 2em;
+}
+.book {
+  padding: 1em 0;
+  border: 1px solid black;
+  width: 80%;
+  margin: 0 auto;
+  background-color: white;
+  margin-bottom: 2em;
+  justify-content: space-around;
+}
