@@ -2,7 +2,7 @@
 const BOOK_ADDED = 'bookAdded';
 const BOOK_REMOVED = 'bookRemoved';
 
-//ACTION CREATORs
+// ACTION CREATORs
 
 export const addBook = ({ title, author }) => ({
   type: BOOK_ADDED,
@@ -18,13 +18,13 @@ export const removeBook = (id) => ({
   },
 });
 
-//REDUCER
+// REDUCER
 const getBooksReducer = () => {
   let lastID = 0;
   const reducer = (state = [], action) => {
-    //console.log(lastID, state, action);
+    // console.log(lastID, state, action);
     const { type, payload } = action;
-    if (type === BOOK_ADDED)
+    if (type === BOOK_ADDED) {
       return [
         ...state,
         {
@@ -33,8 +33,8 @@ const getBooksReducer = () => {
           author: payload.author,
         },
       ];
-    else if (type === BOOK_REMOVED)
-      return state.filter((book) => book.id !== payload.id);
+    }
+    if (type === BOOK_REMOVED) return state.filter((book) => book.id !== payload.id);
 
     return state;
   };
