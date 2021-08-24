@@ -62,5 +62,3 @@ const NewBook = () => {
 };
 
 export default NewBook;
-
-NewBook.propTypes = { addBook: PropTypes.func.isRequired };
