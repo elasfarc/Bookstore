@@ -19,9 +19,15 @@ export const removeBook = (id) => ({
 });
 
 // REDUCER
+const initState = [
+  { id: 1, title: 'BOOK#1', author: 'some author' },
+  { id: 2, title: 'BOOK#2', author: 'some author' },
+  { id: 3, title: 'BOOK#3', author: 'some author' },
+  { id: 4, title: 'BOOK#4', author: 'some author' },
+];
 const getBooksReducer = () => {
   let lastID = 0;
-  const reducer = (state = [], action) => {
+  const reducer = (state = initState, action) => {
     const { type, payload } = action;
     if (type === BOOK_ADDED) {
       return [
@@ -34,7 +40,8 @@ const getBooksReducer = () => {
         },
       ];
     }
-    if (type === BOOK_REMOVED) return state.filter((book) => book.id !== payload.id);
+    if (type === BOOK_REMOVED)
+      return state.filter((book) => book.id !== payload.id);
 
     return state;
   };
