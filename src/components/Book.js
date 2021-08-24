@@ -1,19 +1,29 @@
 import './Book.css';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import * as actions from '../store/books/book';
 
-const Book = ({ book, removeBook }) => (
-  <div className="book flex container">
-    <div className="book--content">
-      <p className="book--title">{book.title}</p>
-      <p className="book--author">{book.author}</p>
+const Book = ({ book }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <div className="book flex container">
+      <div className="book--content">
+        <p className="book--title">{book.title}</p>
+        <p className="book--author">{book.author}</p>
+      </div>
+      <div className="book--control">
+        <button
+          type="button"
+          className="btn"
+          onClick={() => dispatch(actions.removeBook(book.id))}
+        >
+          remove
+        </button>
+      </div>
     </div>
-    <div className="book--control">
-      <button type="button" className="btn" onClick={() => removeBook(book.id)}>
-        remove
-      </button>
-    </div>
-  </div>
-);
+  );
+};
 
 export default Book;
 
@@ -23,5 +33,4 @@ Book.propTypes = {
     author: PropTypes.string,
     id: PropTypes.number,
   }).isRequired,
-  removeBook: PropTypes.func.isRequired,
 };

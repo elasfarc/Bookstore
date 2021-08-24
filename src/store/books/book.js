@@ -12,7 +12,7 @@ export const addBook = ({ title, author }) => ({
   },
 });
 export const removeBook = (id) => ({
-  type: BOOK_ADDED,
+  type: BOOK_REMOVED,
   payload: {
     id,
   },
