@@ -40,8 +40,7 @@ const getBooksReducer = () => {
         },
       ];
     }
-    if (type === BOOK_REMOVED)
-      return state.filter((book) => book.id !== payload.id);
+    if (type === BOOK_REMOVED) return state.filter((book) => book.id !== payload.id);
 
     return state;
   };
