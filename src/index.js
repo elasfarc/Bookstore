@@ -6,7 +6,8 @@ import { Provider } from 'react-redux';
 import Navbar from './components/Navbar';
 import Library from './components/Library';
 import Categories from './components/Categories';
-import store from './store/configureStore';
+
+import store from './redux/configureStore';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -21,7 +22,7 @@ ReactDOM.render(
       </Router>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
