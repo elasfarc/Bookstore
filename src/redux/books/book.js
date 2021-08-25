@@ -12,16 +12,22 @@ export const addBook = ({ title, author }) => ({
   },
 });
 export const removeBook = (id) => ({
-  type: BOOK_ADDED,
+  type: BOOK_REMOVED,
   payload: {
     id,
   },
 });
 
 // REDUCER
+const initState = [
+  { id: 1e5, title: 'BOOK#1', author: 'some author' },
+  { id: 2e5, title: 'BOOK#2', author: 'some author' },
+  { id: 3e5, title: 'BOOK#3', author: 'some author' },
+  { id: 4e5, title: 'BOOK#4', author: 'some author' },
+];
 const getBooksReducer = () => {
   let lastID = 0;
-  const reducer = (state = [], action) => {
+  const reducer = (state = initState, action) => {
     const { type, payload } = action;
     if (type === BOOK_ADDED) {
       return [
