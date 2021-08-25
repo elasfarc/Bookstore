@@ -1,7 +1,7 @@
 import './Book.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import * as actions from '../store/books/book';
+import * as actions from '../redux/books/book';
 
 const Book = ({ book }) => {
   const dispatch = useDispatch();

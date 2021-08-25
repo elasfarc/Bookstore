@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import * as actions from '../store/books/book';
+import * as actions from '../redux/books/book';
 
 const NewBook = () => {
   const [bookTitle, setBookTitle] = React.useState('');
