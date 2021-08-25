@@ -1,11 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Book from './Book';
 import NewBook from './AddNewBook';
 import './Library.css';
+import * as actions from '../redux/books/book';
 
 const Library = () => {
-  const books = useSelector((state) => state.entities.books);
+  let books = useSelector((state) => state.entities.books.list);
+
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    books = dispatch(actions.loadBooks());
+  }, []);
+
+  console.warn(books);
   return (
     <div className="library">
       <ul>
