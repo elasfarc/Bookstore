@@ -14,17 +14,27 @@ export const addBook = ({ title, author }) => ({
     author,
   },
 });
-export const removeBook = (id) => ({
-  type: BOOK_REMOVED,
-  payload: {
-    id,
-  },
-});
 
 export const loadBooks = () => apiActions.requestAPICall({
   url: 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QHPZf1IIMps3KCQX92JD/books',
   onSuccess: BOOKS_LOADED,
 });
+
+export const removeBook = (id) => (dispatch, getState) => {
+  dispatch(
+    apiActions.requestAPICall({
+      url: `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QHPZf1IIMps3KCQX92JD/books/${id}`,
+      method: 'DELETE',
+      body: JSON.stringify({ item_id: id }),
+    }),
+  );
+  dispatch({
+    type: BOOK_REMOVED,
+    payload: {
+      id,
+    },
+  });
+};
 
 // REDUCER
 const initState = {
@@ -47,7 +57,13 @@ const getBooksReducer = () => {
         },
       ];
     }
-    if (type === BOOK_REMOVED) return state.filter((book) => book.id !== payload.id);
+
+    if (type === BOOK_REMOVED) {
+      return {
+        ...state,
+        list: state.list.filter((book) => book.id !== payload.id),
+      };
+    }
 
     if (type === BOOKS_LOADED) {
       return {

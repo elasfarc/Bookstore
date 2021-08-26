@@ -12,12 +12,11 @@ const api = ({ dispatch }) => (next) => async (action) => {
   try {
     const response = await fetch(url, { method }, body);
     const data = await response.json();
-    dispatch(apiActions.onAPICallSuccess(data));
+    dispatch(apiActions.onAPICallSuccess());
     if (onSuccess) dispatch({ type: onSuccess, payload: data });
   } catch (error) {
-    dispatch(apiActions.onAPICallFail(error));
+    dispatch(apiActions.onAPICallFail(error.message));
     if (onError) dispatch({ type: onError, payload: error });
   }
 };
-
 export default api;

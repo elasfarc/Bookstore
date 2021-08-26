@@ -9,9 +9,8 @@ export const requestAPICall = (payload) => ({
   payload,
 });
 
-export const onAPICallSuccess = (payload) => ({
+export const onAPICallSuccess = () => ({
   type: API_CALL_SUCCESS,
-  payload,
 });
 
 export const onAPICallFail = (payload) => ({
