@@ -6,17 +6,18 @@ import './Library.css';
 import * as actions from '../redux/books/book';
 
 const Library = () => {
-  let books = useSelector((state) => state.entities.books.list);
-  let loading = useSelector((state) => state.entities.books.loading);
+  const { list: books, loading: isLoading } = useSelector(
+    (state) => state.entities.books,
+  );
+
   const dispatch = useDispatch();
   React.useEffect(() => {
-    books = dispatch(actions.loadBooks());
+    dispatch(actions.loadBooks());
   }, []);
 
-  console.warn(books);
   return (
     <div className="library">
-      {loading ? (
+      {isLoading ? (
         <h1 className="loading">LOADING...</h1>
       ) : (
         <ul>

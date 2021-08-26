@@ -11,27 +11,25 @@ const BOOKS_REQUESTED = 'books/request';
 
 // ACTION CREATORs
 
-export const loadBooks = () =>
-  apiActions.requestAPICall({
-    url,
-    onStart: BOOKS_REQUESTED,
-    onSuccess: BOOKS_LOADED,
-  });
+export const loadBooks = () => apiActions.requestAPICall({
+  url,
+  onStart: BOOKS_REQUESTED,
+  onSuccess: BOOKS_LOADED,
+});
 
-export const addBook = ({ title, category }) =>
-  apiActions.requestAPICall({
-    url,
-    body: JSON.stringify({ item_id: uuidv4(), title, category }),
-    method: 'POST',
-    onSuccess: loadBooks(),
-  });
+export const addBook = ({ title, category }) => apiActions.requestAPICall({
+  url,
+  body: JSON.stringify({ item_id: uuidv4(), title, category }),
+  method: 'POST',
+  onSuccess: loadBooks(),
+});
 export const removeBook = (id) => (dispatch) => {
   dispatch(
     apiActions.requestAPICall({
       url: `${url}/${id}`,
       method: 'DELETE',
       body: JSON.stringify({ item_id: id }),
-    })
+    }),
   );
   dispatch({
     type: BOOK_REMOVED,
