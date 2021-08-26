@@ -44,33 +44,30 @@ const initState = {
   loading: false,
   lastFetch: null,
 };
-const getBooksReducer = () => {
-  const lastID = 0;
-  const reducer = (state = initState, action) => {
-    const { type, payload } = action;
 
-    if (type === BOOK_REMOVED) {
-      return {
-        ...state,
-        list: state.list.filter((book) => book.id !== payload.id),
-      };
-    }
+const reducer = (state = initState, action) => {
+  const { type, payload } = action;
 
-    if (type === BOOKS_LOADED) {
-      return {
-        ...state,
-        loading: false,
-        list: Object.entries(payload).map(([id, [{ title, category }]]) => ({
-          id,
-          title,
-          category,
-        })),
-      };
-    }
+  if (type === BOOK_REMOVED) {
+    return {
+      ...state,
+      list: state.list.filter((book) => book.id !== payload.id),
+    };
+  }
 
-    return state;
-  };
-  return reducer;
+  if (type === BOOKS_LOADED) {
+    return {
+      ...state,
+      loading: false,
+      list: Object.entries(payload).map(([id, [{ title, category }]]) => ({
+        id,
+        title,
+        category,
+      })),
+    };
+  }
+
+  return state;
 };
 
-export default getBooksReducer;
+export default reducer;
