@@ -4,9 +4,9 @@ import * as actions from '../redux/books/book';
 
 const NewBook = () => {
   const [bookTitle, setBookTitle] = React.useState('');
-  const [bookAuthor, setBookAuthor] = React.useState('');
+  const [bookCategory, setBookAuthor] = React.useState('');
   const titleInputRef = React.useRef(null);
-  const authorInputRef = React.useRef(null);
+  const categoryInputRef = React.useRef(null);
   const dispatch = useDispatch();
 
   const resetInputs = () => {
@@ -20,12 +20,12 @@ const NewBook = () => {
       current: { name },
     } = ref;
     if (name === 'bookTitleInput') setBookTitle(value);
-    else if (name === 'bookAuthorInput') setBookAuthor(value);
+    else if (name === 'bookCategoryInput') setBookAuthor(value);
   };
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    dispatch(actions.addBook({ title: bookTitle, author: bookAuthor }));
+    dispatch(actions.addBook({ title: bookTitle, category: bookCategory }));
     resetInputs();
   };
 
@@ -43,12 +43,12 @@ const NewBook = () => {
             onChange={() => handleInputChange(titleInputRef)}
           />
           <input
-            name="bookAuthorInput"
+            name="bookCategoryInput"
             type="text"
-            placeholder="Author name"
-            ref={authorInputRef}
-            value={bookAuthor}
-            onChange={() => handleInputChange(authorInputRef)}
+            placeholder="Category"
+            ref={categoryInputRef}
+            value={bookCategory}
+            onChange={() => handleInputChange(categoryInputRef)}
           />
           <button className="btn" type="submit">
             {' '}

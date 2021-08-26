@@ -10,7 +10,7 @@ const Book = ({ book }) => {
     <div className="book flex container">
       <div className="book--content">
         <p className="book--title">{book.title}</p>
-        <p className="book--author">{book.author}</p>
+        <p className="book--category">{book.category}</p>
       </div>
       <div className="book--control">
         <button
@@ -30,7 +30,7 @@ export default Book;
 Book.propTypes = {
   book: PropTypes.shape({
     title: PropTypes.string,
-    author: PropTypes.string,
+    category: PropTypes.string,
     id: PropTypes.string,
   }).isRequired,
 };
