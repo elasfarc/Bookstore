@@ -1,6 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import * as apiActions from '../api';
+import apiConfig from '../../services/api/provider';
 
+const { booksEndpoint: url } = apiConfig;
 // ACTION TYPES
 
 const BOOK_REMOVED = 'bookRemoved';
@@ -10,14 +12,21 @@ const BOOKS_LOADED = 'books/load';
 
 export const loadBooks = () =>
   apiActions.requestAPICall({
-    url: 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QHPZf1IIMps3KCQX92JD/books',
+    url,
     onSuccess: BOOKS_LOADED,
   });
 
+export const addBook = ({ title, category }) =>
+  apiActions.requestAPICall({
+    url,
+    body: JSON.stringify({ item_id: uuidv4(), title, category }),
+    method: 'POST',
+    onSuccess: loadBooks(),
+  });
 export const removeBook = (id) => (dispatch) => {
   dispatch(
     apiActions.requestAPICall({
-      url: `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QHPZf1IIMps3KCQX92JD/books/${id}`,
+      url: `${url}/${id}`,
       method: 'DELETE',
       body: JSON.stringify({ item_id: id }),
     })
@@ -29,14 +38,6 @@ export const removeBook = (id) => (dispatch) => {
     },
   });
 };
-
-export const addBook = ({ title, category }) =>
-  apiActions.requestAPICall({
-    url: 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QHPZf1IIMps3KCQX92JD/books/',
-    body: JSON.stringify({ item_id: uuidv4(), title, category }),
-    method: 'POST',
-    onSuccess: loadBooks(),
-  });
 
 // REDUCER
 const initState = {
