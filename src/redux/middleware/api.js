@@ -9,11 +9,21 @@ const api = ({ dispatch }) => (next) => async (action) => {
       url, method = 'GET', body, onSuccess, onError,
     },
   } = action;
+
   try {
-    const response = await fetch(url, { method }, body);
-    const data = await response.json();
+    let response = await fetch(url, {
+      method,
+      body,
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (method === 'GET') response = await response.json();
     dispatch(apiActions.onAPICallSuccess());
-    if (onSuccess) dispatch({ type: onSuccess, payload: data });
+    if (onSuccess) {
+      if (onSuccess.type === apiActions.API_CALL_REQUESTED) dispatch(onSuccess);
+      else dispatch({ type: onSuccess, payload: response });
+    }
   } catch (error) {
     dispatch(apiActions.onAPICallFail(error.message));
     if (onError) dispatch({ type: onError, payload: error });

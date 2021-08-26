@@ -1,32 +1,26 @@
+import { v4 as uuidv4 } from 'uuid';
 import * as apiActions from '../api';
 
 // ACTION TYPES
-const BOOK_ADDED = 'bookAdded';
+
 const BOOK_REMOVED = 'bookRemoved';
 const BOOKS_LOADED = 'books/load';
 
 // ACTION CREATORs
 
-export const addBook = ({ title, author }) => ({
-  type: BOOK_ADDED,
-  payload: {
-    title,
-    author,
-  },
-});
+export const loadBooks = () =>
+  apiActions.requestAPICall({
+    url: 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QHPZf1IIMps3KCQX92JD/books',
+    onSuccess: BOOKS_LOADED,
+  });
 
-export const loadBooks = () => apiActions.requestAPICall({
-  url: 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QHPZf1IIMps3KCQX92JD/books',
-  onSuccess: BOOKS_LOADED,
-});
-
-export const removeBook = (id) => (dispatch, getState) => {
+export const removeBook = (id) => (dispatch) => {
   dispatch(
     apiActions.requestAPICall({
       url: `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QHPZf1IIMps3KCQX92JD/books/${id}`,
       method: 'DELETE',
       body: JSON.stringify({ item_id: id }),
-    }),
+    })
   );
   dispatch({
     type: BOOK_REMOVED,
@@ -36,6 +30,14 @@ export const removeBook = (id) => (dispatch, getState) => {
   });
 };
 
+export const addBook = ({ title, category }) =>
+  apiActions.requestAPICall({
+    url: 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QHPZf1IIMps3KCQX92JD/books/',
+    body: JSON.stringify({ item_id: uuidv4(), title, category }),
+    method: 'POST',
+    onSuccess: loadBooks(),
+  });
+
 // REDUCER
 const initState = {
   list: [],
@@ -43,20 +45,9 @@ const initState = {
   lastFetch: null,
 };
 const getBooksReducer = () => {
-  let lastID = 0;
+  const lastID = 0;
   const reducer = (state = initState, action) => {
     const { type, payload } = action;
-    if (type === BOOK_ADDED) {
-      return [
-        ...state,
-        {
-          // eslint-disable-next-line no-plusplus
-          id: ++lastID,
-          title: payload.title,
-          author: payload.author,
-        },
-      ];
-    }
 
     if (type === BOOK_REMOVED) {
       return {
