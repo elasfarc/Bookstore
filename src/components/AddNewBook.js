@@ -5,6 +5,7 @@ import * as actions from '../redux/books/book';
 const NewBook = () => {
   const [bookTitle, setBookTitle] = React.useState('');
   const [bookCategory, setBookAuthor] = React.useState('');
+  const [error, setError] = React.useState({});
   const titleInputRef = React.useRef(null);
   const categoryInputRef = React.useRef(null);
   const dispatch = useDispatch();
@@ -21,6 +22,20 @@ const NewBook = () => {
     } = ref;
     if (name === 'bookTitleInput') setBookTitle(value);
     else if (name === 'bookCategoryInput') setBookAuthor(value);
+  };
+
+  const handleInputBlur = (ref) => {
+    const {
+      current: { value },
+      current: { name },
+    } = ref;
+    const isInvalid = value.trim() === '';
+    if (isInvalid) {
+      setError((prevState) => ({
+        ...prevState,
+        [name]: `${name} can not be embty`,
+      }));
+    } else setError((prevState) => ({ ...prevState, [name]: '' }));
   };
 
   const handleSumbit = (e) => {
@@ -41,6 +56,7 @@ const NewBook = () => {
             ref={titleInputRef}
             value={bookTitle}
             onChange={() => handleInputChange(titleInputRef)}
+            onBlur={() => handleInputBlur(titleInputRef)}
           />
           <input
             name="bookCategoryInput"
@@ -49,12 +65,26 @@ const NewBook = () => {
             ref={categoryInputRef}
             value={bookCategory}
             onChange={() => handleInputChange(categoryInputRef)}
+            onBlur={() => handleInputBlur(categoryInputRef)}
           />
-          <button className="btn" type="submit">
+          <button
+            disabled={Object.values(error).some(Boolean)}
+            className="btn"
+            type="submit"
+          >
             {' '}
             add book
           </button>
         </form>
+        {Object.values(error).some(Boolean) ? (
+          <div className="errors">
+            {Object.values(error)
+              .filter(Boolean)
+              .map((err) => (
+                <li key={err}>{err}</li>
+              ))}
+          </div>
+        ) : null}
       </div>
     </div>
   );
