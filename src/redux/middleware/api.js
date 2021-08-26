@@ -1,6 +1,5 @@
 import * as apiActions from '../api';
 
-// eslint-disable-next-line consistent-return
 const api = ({ dispatch }) => (next) => async (action) => {
   if (action.type !== apiActions.API_CALL_REQUESTED) return next(action);
 
@@ -29,5 +28,6 @@ const api = ({ dispatch }) => (next) => async (action) => {
     dispatch(apiActions.onAPICallFail(error.message));
     if (onError) dispatch({ type: onError, payload: error });
   }
+  return null;
 };
 export default api;
