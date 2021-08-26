@@ -7,12 +7,14 @@ const { booksEndpoint: url } = apiConfig;
 
 const BOOK_REMOVED = 'bookRemoved';
 const BOOKS_LOADED = 'books/load';
+const BOOKS_REQUESTED = 'books/request';
 
 // ACTION CREATORs
 
 export const loadBooks = () =>
   apiActions.requestAPICall({
     url,
+    onStart: BOOKS_REQUESTED,
     onSuccess: BOOKS_LOADED,
   });
 
@@ -48,7 +50,12 @@ const initState = {
 
 const reducer = (state = initState, action) => {
   const { type, payload } = action;
-
+  if (type === BOOKS_REQUESTED) {
+    return {
+      ...state,
+      loading: true,
+    };
+  }
   if (type === BOOK_REMOVED) {
     return {
       ...state,

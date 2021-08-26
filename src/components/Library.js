@@ -7,7 +7,7 @@ import * as actions from '../redux/books/book';
 
 const Library = () => {
   let books = useSelector((state) => state.entities.books.list);
-
+  let loading = useSelector((state) => state.entities.books.loading);
   const dispatch = useDispatch();
   React.useEffect(() => {
     books = dispatch(actions.loadBooks());
@@ -16,11 +16,15 @@ const Library = () => {
   console.warn(books);
   return (
     <div className="library">
-      <ul>
-        {books.map((book) => (
-          <Book key={book.id} book={book} />
-        ))}
-      </ul>
+      {loading ? (
+        <h1 className="loading">LOADING...</h1>
+      ) : (
+        <ul>
+          {books.map((book) => (
+            <Book key={book.id} book={book} />
+          ))}
+        </ul>
+      )}
       <NewBook />
     </div>
   );
