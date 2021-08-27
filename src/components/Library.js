@@ -7,7 +7,7 @@ import * as actions from '../redux/books/book';
 
 const Library = () => {
   const { list: books, loading: isLoading } = useSelector(
-    (state) => state.entities.books
+    (state) => state.entities.books,
   );
 
   const dispatch = useDispatch();

@@ -1,5 +1,10 @@
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New',
     monospace;
 }
 
@@ -20,7 +25,6 @@ body {
   background-color: #fafafa;
   font-family: 'Roboto Slab', serif;
   text-transform: capitalize;
-
   margin-bottom: 50px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

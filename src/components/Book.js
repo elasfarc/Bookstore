@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import './Book.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
