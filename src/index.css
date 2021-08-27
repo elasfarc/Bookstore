@@ -32,3 +32,46 @@ a:visited {
 img {
   max-width: 100%;
 }
+
+/* reuseable */
+.flex {
+  display: flex;
+}
+.space-between {
+  justify-content: space-between;
+}
+.main-center {
+  justify-content: center;
+}
+.cross-center {
+  align-items: center;
+}
+.direction-col {
+  flex-direction: column;
+}
+.grow {
+  flex-grow: 1;
+}
+.gap-1 {
+  gap: 1vw;
+}
+.gap-2 {
+  gap: 2vw;
+}
+.gap-3 {
+  gap: 3rem;
+}
+.container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.vertical-pipe::after {
+  position: relative;
+  top: 0;
+  left: 15%;
+  content: '';
+  border-left: 2px solid gainsboro;
+  opacity: 50%;
+  height: 4em;
+}
