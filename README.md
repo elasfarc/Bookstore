@@ -2,6 +2,10 @@
 
 MVP website that allows users to: Display a list of books. Add a book. Remove a selected book.
 
+based on [this](https://app.zeplin.io/project/5b35a9e13227086040f8eb75/screen/5b695e29bb8c844f118f9378) design
+
+![screen](./ss.png)
+
 ## Built With
 
 - ReactJS
