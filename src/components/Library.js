@@ -16,16 +16,17 @@ const Library = () => {
   }, []);
 
   return (
-    <div className="library">
+    <div className="library container">
       {isLoading ? (
         <h1 className="loading">LOADING...</h1>
       ) : (
-        <ul>
+        <ul className="list-group">
           {books.map((book) => (
             <Book key={book.id} book={book} />
           ))}
         </ul>
       )}
+
       <NewBook />
     </div>
   );

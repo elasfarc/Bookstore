@@ -1,7 +1,95 @@
-.book {
-  padding: 1em 0;
+/* .book {
+  border-radius: 4px;
+  padding: 2em 9em 1.5em 1.5em;
   border: 1px solid black;
   background-color: white;
-  margin-bottom: 2em;
+  margin-bottom: 0.9em;
   justify-content: space-around;
+} */
+
+/* book */
+
+.book {
+  padding: 2em 6em 1.6em 1.6em;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+}
+
+.book + .book {
+  margin-top: 0.9rem;
+}
+
+/* book-info +++ book-control */
+
+.book--info {
+  margin-bottom: 1.3em;
+  letter-spacing: 1px;
+}
+
+.nav,
+.book--category,
+.book--author,
+.btn__book-ctrl,
+.book--progress--plain span,
+.book--current-chp {
+  font-size: 0.8rem;
+}
+
+.book--category,
+.book--progress--plain span,
+.book--current-chp {
+  opacity: 50%;
+}
+
+.book--category {
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+.book--author,
+.btn__book-ctrl {
+  font-weight: 300;
+  color: #4386bf;
+}
+
+.btn__book-ctrl {
+  padding: 0.3em;
+}
+
+/* progress */
+
+.book--progress--chart {
+  width: 4rem;
+  height: 4rem;
+  border: 5px solid #4386bf;
+  transform: rotate(45deg);
+  border-radius: 50%;
+  border-left-color: gainsboro;
+}
+
+.book--progress--plain {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+}
+
+.book--progress--plain span {
+  display: block;
+}
+
+/* book-current-state */
+
+.book--current-chp-name {
+  margin: 0.4em 0 1.4em 0;
+  font-weight: 300;
+}
+
+.btn__book-state {
+  padding: 0.5em 1.5em;
+  color: white;
+  background-color: #0290ff;
+  font-weight: 200;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  border-radius: 4px;
 }
