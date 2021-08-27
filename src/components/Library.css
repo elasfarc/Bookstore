@@ -1,7 +1,18 @@
 /* .library {
-  margin-top: 2em;
 } */
 
+.list-group {
+  margin-bottom: 2em;
+}
+.list-group::after {
+  position: relative;
+  top: 15%;
+  content: '';
+  display: block;
+  border-top: 2px solid gray;
+  margin-top: 2rem;
+  opacity: 20%;
+}
 .loading {
   position: absolute;
   top: 50%;
