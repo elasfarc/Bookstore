@@ -52,3 +52,23 @@
 .btn__book-ctrl {
   padding: 0.3em;
 }
+
+/* progress */
+
+.book--progress--chart {
+  width: 4rem;
+  height: 4rem;
+  border: 5px solid #4386bf;
+  transform: rotate(45deg);
+  border-radius: 50%;
+  border-left-color: gainsboro;
+}
+
+.book--progress--plain {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+}
+
+.book--progress--plain span {
+  display: block;
+}
