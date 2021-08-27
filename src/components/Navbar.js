@@ -1,24 +1,41 @@
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faUser);
 
 const Navbar = () => (
-  <div className="navbar">
-    <div className="container">
-      <div className="row flex cross-center">
-        <div className="most-left flex cross-center gap-10">
-          <div className="logo">BOOKSTORE</div>
-          <ul className="flex gap-10">
-            <Link to="/">
-              <li>BOOKS</li>
+  <header className="header">
+    <div className="flex cross-center container gap-2">
+      <a href="" className="logo">
+        Bookstore CMS
+      </a>
+      <nav className="nav flex space-between cross-center container">
+        <ul className="nav--list flex gap-2">
+          <li className="nav--list">
+            <Link to="/" className="nav--link">
+              books
             </Link>
-            <Link to="/categories">
-              <li>CATEGORIES</li>
+          </li>
+          <li className="nav--list">
+            <Link to="/categories" className="nav--link">
+              categories
             </Link>
-          </ul>
-        </div>
-        <div className="most-right">Account</div>
-      </div>
+          </li>
+        </ul>
+        <ul className="nav--list">
+          <li
+            style={{ cursor: 'pointer' }}
+            className="nav--list nav--person-icon"
+          >
+            <FontAwesomeIcon icon={faUser} />
+          </li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 );
 export default Navbar;
