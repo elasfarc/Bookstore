@@ -74,7 +74,7 @@ const NewBook = () => {
           />
           <button
             disabled={Boolean(
-              !(titleInputRef.current?.value && categoryInputRef.current?.value)
+              !(titleInputRef.current?.value && categoryInputRef.current?.value),
             )}
             className="btn"
             type="submit"
