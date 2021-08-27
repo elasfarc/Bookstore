@@ -6,16 +6,18 @@
   margin-bottom: 0.9em;
   justify-content: space-around;
 } */
+
 /* book */
-.book + .book {
-  margin-top: 0.9rem;
-}
+
 .book {
   padding: 2em 6em 1.6em 1.6em;
   background-color: #fff;
   border: 1px solid #e8e8e8;
-
   border-radius: 4px;
+}
+
+.book + .book {
+  margin-top: 0.9rem;
 }
 
 /* book-info +++ book-control */
@@ -24,6 +26,7 @@
   margin-bottom: 1.3em;
   letter-spacing: 1px;
 }
+
 .nav,
 .book--category,
 .book--author,
@@ -32,23 +35,24 @@
 .book--current-chp {
   font-size: 0.8rem;
 }
+
 .book--category,
 .book--progress--plain span,
 .book--current-chp {
   opacity: 50%;
 }
+
 .book--category {
   margin-bottom: 0.25rem;
   font-weight: bold;
 }
-.book--info {
-  font-size: 1.3rem;
-}
+
 .book--author,
 .btn__book-ctrl {
   font-weight: 300;
   color: #4386bf;
 }
+
 .btn__book-ctrl {
   padding: 0.3em;
 }
@@ -79,6 +83,7 @@
   margin: 0.4em 0 1.4em 0;
   font-weight: 300;
 }
+
 .btn__book-state {
   padding: 0.5em 1.5em;
   color: white;
