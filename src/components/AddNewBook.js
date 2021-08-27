@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import * as actions from '../redux/books/book';
+import './AddNewBook.css';
 
 const NewBook = () => {
   const [bookTitle, setBookTitle] = React.useState('');
@@ -51,10 +52,11 @@ const NewBook = () => {
 
   return (
     <div className="add-new-book">
-      <div className="container">
-        <h4>add new book</h4>
-        <form onSubmit={handleSumbit}>
+      <div className="">
+        <h4 className="add-new-book--heading">add new book</h4>
+        <form className="flex space-between" onSubmit={handleSumbit}>
           <input
+            className="grow"
             name="bookTitleInput"
             type="text"
             placeholder="Book title"
@@ -64,6 +66,7 @@ const NewBook = () => {
             onBlur={() => handleInputBlur(titleInputRef)}
           />
           <input
+            className="grow"
             name="bookCategoryInput"
             type="text"
             placeholder="Category"
@@ -74,9 +77,9 @@ const NewBook = () => {
           />
           <button
             disabled={Boolean(
-              !(titleInputRef.current?.value && categoryInputRef.current?.value),
+              !(titleInputRef.current?.value && categoryInputRef.current?.value)
             )}
-            className="btn"
+            className="btn grow"
             type="submit"
           >
             {' '}
