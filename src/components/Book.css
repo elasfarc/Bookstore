@@ -1,8 +1,54 @@
-.book {
+/* .book {
   border-radius: 4px;
   padding: 2em 9em 1.5em 1.5em;
   border: 1px solid black;
   background-color: white;
   margin-bottom: 0.9em;
   justify-content: space-around;
+} */
+/* book */
+.book + .book {
+  margin-top: 0.9rem;
+}
+.book {
+  padding: 2em 6em 1.6em 1.6em;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+
+  border-radius: 4px;
+}
+
+/* book-info +++ book-control */
+
+.book--info {
+  margin-bottom: 1.3em;
+  letter-spacing: 1px;
+}
+.nav,
+.book--category,
+.book--author,
+.btn__book-ctrl,
+.book--progress--plain span,
+.book--current-chp {
+  font-size: 0.8rem;
+}
+.book--category,
+.book--progress--plain span,
+.book--current-chp {
+  opacity: 50%;
+}
+.book--category {
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+.book--info {
+  font-size: 1.3rem;
+}
+.book--author,
+.btn__book-ctrl {
+  font-weight: 300;
+  color: #4386bf;
+}
+.btn__book-ctrl {
+  padding: 0.3em;
 }
