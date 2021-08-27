@@ -15,6 +15,11 @@ const NewBook = () => {
     setBookTitle('');
   };
 
+  const isInputError = (txt) => {
+    const isWhiteSpace = txt.trim() === '';
+    return Boolean(isWhiteSpace);
+  };
+
   const handleInputChange = (ref) => {
     const {
       current: { value },
@@ -29,8 +34,8 @@ const NewBook = () => {
       current: { value },
       current: { name },
     } = ref;
-    const isInvalid = value.trim() === '';
-    if (isInvalid) {
+
+    if (isInputError(value)) {
       setError((prevState) => ({
         ...prevState,
         [name]: `${name} can not be embty`,
@@ -68,7 +73,9 @@ const NewBook = () => {
             onBlur={() => handleInputBlur(categoryInputRef)}
           />
           <button
-            disabled={Object.values(error).some(Boolean)}
+            disabled={Boolean(
+              !(titleInputRef.current?.value && categoryInputRef.current?.value)
+            )}
             className="btn"
             type="submit"
           >
