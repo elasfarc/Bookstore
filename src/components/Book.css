@@ -1,7 +1,8 @@
 .book {
-  padding: 1em 0;
+  border-radius: 4px;
+  padding: 2em 9em 1.5em 1.5em;
   border: 1px solid black;
   background-color: white;
-  margin-bottom: 2em;
+  margin-bottom: 0.9em;
   justify-content: space-around;
 }
